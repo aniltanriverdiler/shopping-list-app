@@ -13,11 +13,21 @@ function App() {
     setProducts((prev) => [...prev, newProduct]);
   };
 
+  const handleToggleBought = (id: string) => {
+    setProducts((prevProducts) =>
+      prevProducts.map((product) =>
+        product.id === id
+          ? { ...product, isBought: !product.isBought }
+          : product
+      )
+    );
+  };
+
   return (
     <>
       <Container>
         <Row className="mt-5 justify-content-md-center">
-          <Col xs lg="6">
+          <Col xs lg="7">
             <h1>Ürün Ekle</h1>
             <ProductForm
               onAdd={handleAddProduct}
@@ -28,6 +38,7 @@ function App() {
               products={products}
               categories={categories}
               shops={shops}
+              onToggleBought={handleToggleBought}
             />
           </Col>
         </Row>

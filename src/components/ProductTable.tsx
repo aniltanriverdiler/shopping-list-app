@@ -1,17 +1,19 @@
 import type React from "react";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import type { CategoryProps, Product, ShopProps } from "../types/types";
 
 type ProductTableProps = {
   products: Product[];
   categories: CategoryProps[];
   shops: ShopProps[];
+  onToggleBought: (id: string) => void;
 };
 
 const ProductTable: React.FC<ProductTableProps> = ({
   products,
   categories,
   shops,
+  onToggleBought,
 }) => {
   const getShopName = (id: number) =>
     shops.find((s) => s.id === id)?.shopName || "Bilinmiyor";
@@ -32,18 +34,61 @@ const ProductTable: React.FC<ProductTableProps> = ({
       </thead>
       <tbody>
         {products.map((product, index) => (
-          <tr key={product.id}>
-            <td>{index + 1}</td>
-            <td>{product.id}</td>
-            <td>{product.productName}</td>
-            <td>{getShopName(product.shopId)}</td>
-            <td>{getCategoryName(product.categoryId)}</td>
+          <tr key={product.id} className={product.isBought ? "text-muted" : ""}>
+            <td
+              className={
+                product.isBought
+                  ? "text-decoration-line-through text-muted"
+                  : ""
+              }
+            >
+              {index + 1}
+            </td>
+            <td
+              className={
+                product.isBought
+                  ? "text-decoration-line-through text-muted"
+                  : ""
+              }
+            >
+              {product.id}
+            </td>
+            <td
+              className={
+                product.isBought
+                  ? "text-decoration-line-through text-muted"
+                  : ""
+              }
+            >
+              {product.productName}
+            </td>
+            <td
+              className={
+                product.isBought
+                  ? "text-decoration-line-through text-muted"
+                  : ""
+              }
+            >
+              {getShopName(product.shopId)}
+            </td>
+            <td
+              className={
+                product.isBought
+                  ? "text-decoration-line-through text-muted"
+                  : ""
+              }
+            >
+              {getCategoryName(product.categoryId)}
+            </td>
             <td>
-              {product.isBought ? (
-                <span className="text-success">Alındı</span>
-              ) : (
-                <span className="text-danger">Alınmadı</span>
-              )}
+              <button
+                className={`btn btn-sm ${
+                  product.isBought ? "btn-success" : "btn-outline-danger"
+                }`}
+                onClick={() => onToggleBought(product.id)}
+              >
+                {product.isBought ? "Alındı" : "Alınmadı"}
+              </button>
             </td>
           </tr>
         ))}
