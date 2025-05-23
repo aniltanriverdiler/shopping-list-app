@@ -14,4 +14,5 @@ export interface Product {
   shopId: number;
   categoryId: number;
   isBought?: boolean;
+  onDelete: boolean;
 }

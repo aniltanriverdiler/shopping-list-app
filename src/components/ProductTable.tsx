@@ -1,12 +1,15 @@
 import type React from "react";
 import { Button, Table } from "react-bootstrap";
 import type { CategoryProps, Product, ShopProps } from "../types/types";
+import { FaTrash } from "react-icons/fa";
+import IconButton from "./IconButton";
 
 type ProductTableProps = {
   products: Product[];
   categories: CategoryProps[];
   shops: ShopProps[];
   onToggleBought: (id: string) => void;
+  onDelete: (id: string) => void;
 };
 
 const ProductTable: React.FC<ProductTableProps> = ({
@@ -14,6 +17,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
   categories,
   shops,
   onToggleBought,
+  onDelete,
 }) => {
   const getShopName = (id: number) =>
     shops.find((s) => s.id === id)?.shopName || "Bilinmiyor";
@@ -30,6 +34,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
           <th>Market</th>
           <th>Kategori</th>
           <th>Durum</th>
+          <th>Sil</th>
         </tr>
       </thead>
       <tbody>
@@ -89,6 +94,14 @@ const ProductTable: React.FC<ProductTableProps> = ({
               >
                 {product.isBought ? "Alındı" : "Alınmadı"}
               </button>
+            </td>
+            <td>
+              <IconButton 
+              icon={<FaTrash/>}
+              variant="danger"
+              onClick={() => onDelete(product.id)}
+              title="Ürünü sil"
+              />
             </td>
           </tr>
         ))}

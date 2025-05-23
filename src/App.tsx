@@ -5,6 +5,7 @@ import type { Product } from "./types/types";
 import { categories, shops } from "./data/mockData";
 import { Col, Container, Row } from "react-bootstrap";
 import ProductTable from "./components/ProductTable";
+import { Prev } from "react-bootstrap/esm/PageItem";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -23,11 +24,15 @@ function App() {
     );
   };
 
+  const handleDeleteProduct = (id: string) => {
+    setProducts((prev) => prev.filter((product) => product.id !== id));
+  };
+
   return (
     <>
       <Container>
         <Row className="mt-5 justify-content-md-center">
-          <Col xs lg="7">
+          <Col xs={8}>
             <h1>Ürün Ekle</h1>
             <ProductForm
               onAdd={handleAddProduct}
@@ -39,6 +44,7 @@ function App() {
               categories={categories}
               shops={shops}
               onToggleBought={handleToggleBought}
+              onDelete={handleDeleteProduct}
             />
           </Col>
         </Row>
