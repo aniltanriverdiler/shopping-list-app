@@ -1,6 +1,6 @@
 import type React from "react";
 import type { CategoryProps, Product, ShopProps } from "../types/types";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 
@@ -83,6 +83,11 @@ const ProductForm: React.FC<ProductFormProps> = ({
             ))}
           </Form.Select>
         </Form.Group>
+        <div className="d-flex justify-content-center">
+          <Button type="submit" variant="success" className="mt-1 mb-3">
+            Ürünü Ekle
+          </Button>
+        </div>
       </Form>
     </>
   );
