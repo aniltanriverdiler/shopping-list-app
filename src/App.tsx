@@ -5,23 +5,41 @@ import type { Product } from "./types/types";
 import { categories, shops } from "./data/mockData";
 import { Col, Container, Row } from "react-bootstrap";
 import ProductTable from "./components/ProductTable";
-import { Prev } from "react-bootstrap/esm/PageItem";
+import Confetti from "react-confetti";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const handleAddProduct = (newProduct: Product) => {
     setProducts((prev) => [...prev, newProduct]);
   };
 
   const handleToggleBought = (id: string) => {
-    setProducts((prevProducts) =>
-      prevProducts.map((product) =>
+    setProducts((prevProducts) => {
+      const updatedProducts = prevProducts.map((product) =>
         product.id === id
           ? { ...product, isBought: !product.isBought }
           : product
-      )
-    );
+      );
+
+      const wasAllBoughtBefore = prevProducts.every(
+        (product) => product.isBought
+      );
+      const isAllBoughtNow = updatedProducts.every(
+        (product) => product.isBought
+      );
+
+      if (!wasAllBoughtBefore && isAllBoughtNow) {
+        alert("Alışveriş Tamamlandı 🎉");
+        setShowConfetti(true);
+        setTimeout(() => {
+          setShowConfetti(false);
+        }, 9000);
+      }
+
+      return updatedProducts;
+    });
   };
 
   const handleDeleteProduct = (id: string) => {
@@ -30,6 +48,7 @@ function App() {
 
   return (
     <>
+      {showConfetti && <Confetti />}
       <Container>
         <Row className="mt-5 justify-content-md-center">
           <Col xs={8}>
