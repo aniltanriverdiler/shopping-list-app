@@ -29,12 +29,12 @@ const ProductTable: React.FC<ProductTableProps> = ({
       <thead>
         <tr>
           <th>#</th>
-          <th>Ürün ID</th>
-          <th>Ürün Adı</th>
+          <th>Product ID</th>
+          <th>Product Name</th>
           <th>Market</th>
-          <th>Kategori</th>
-          <th>Durum</th>
-          <th>Sil</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -91,7 +91,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
                 size="sm"
                 onClick={() => onToggleBought(product.id)}
               >
-                {product.isBought ? "✓ Alındı" : "✗ Alınmadı"}
+                {product.isBought ? "✓ Purchased" : "✗ Not Purchased"}
               </Button>
             </td>
             <td>
@@ -99,7 +99,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
                 icon={<FaTrash />}
                 variant="danger"
                 onClick={() => onDelete(product.id)}
-                title="Ürünü sil"
+                title="Delete product"
               />
             </td>
           </tr>

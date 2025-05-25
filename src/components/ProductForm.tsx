@@ -1,9 +1,8 @@
 import type React from "react";
 import type { CategoryProps, Product, ShopProps } from "../types/types";
-import { Button, Form, } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import { nanoid } from "nanoid";
-import FilterBar from "./FilterBar";
 
 type ProductFormProps = {
   onAdd: (product: Product) => void;
@@ -24,7 +23,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
     e.preventDefault();
 
     if (!name || !shopId || !categoryId) {
-      alert("Lütfen tüm alanları doldurun.");
+      alert("Please fill in all the fields.");
       return;
     }
 
@@ -48,21 +47,21 @@ const ProductForm: React.FC<ProductFormProps> = ({
     <>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formProductName">
-          <Form.Label>Ürün Adı</Form.Label>
+          <Form.Label>Product Name:</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Ürün adını giriniz"
+            placeholder="Enter the product name."
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formShopSelect">
-          <Form.Label>Market Seç</Form.Label>
+          <Form.Label>Select market:</Form.Label>
           <Form.Select
             value={shopId}
             onChange={(e) => setShopId(Number(e.target.value))}
           >
-            <option value="">Market seçiniz</option>
+            <option value="">Please select a market.</option>
             {shops.map((shop) => (
               <option key={shop.id} value={shop.id}>
                 {shop.shopName}
@@ -71,12 +70,12 @@ const ProductForm: React.FC<ProductFormProps> = ({
           </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formCategorySelect">
-          <Form.Label>Kategori Seç</Form.Label>
+          <Form.Label>Select category:</Form.Label>
           <Form.Select
             value={categoryId}
             onChange={(e) => setCategoryId(Number(e.target.value))}
           >
-            <option value="">Kategori seçiniz</option>
+            <option value="">Please select a category.</option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.categoryName}
@@ -86,7 +85,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
         </Form.Group>
         <div className="d-flex justify-content-center">
           <Button type="submit" variant="success" className="mt-1 mb-3">
-            Ürünü Ekle
+            Add product
           </Button>
         </div>
       </Form>

@@ -14,16 +14,16 @@ export const shops: ShopProps[] = [
 ];
 
 export const categories: CategoryProps[] = [
-  { id: 1, categoryName: "Elektronik" },
-  { id: 2, categoryName: "Şarküteri" },
-  { id: 3, categoryName: "Oyuncak" },
-  { id: 4, categoryName: "Bakliyat" },
-  { id: 5, categoryName: "Fırın" },
-  { id: 6, categoryName: "Temizlik" },
-  { id: 7, categoryName: "Kişisel Bakım" },
-  { id: 8, categoryName: "Giyim" },
-  { id: 9, categoryName: "Meyve & Sebze" },
-  { id: 10, categoryName: "İçecekler" },
-  { id: 11, categoryName: "Kahve & Çay" },
-  { id: 12, categoryName: "Ev Gereçleri" },
+  { id: 1, categoryName: "Electronics" },
+  { id: 2, categoryName: "Delicatessen" },
+  { id: 3, categoryName: "Toys" },
+  { id: 4, categoryName: "Legumes" },
+  { id: 5, categoryName: "Bakery" },
+  { id: 6, categoryName: "Cleaning" },
+  { id: 7, categoryName: "Personal Care" },
+  { id: 8, categoryName: "Clothing" },
+  { id: 9, categoryName: "Fruits & Vegetables" },
+  { id: 10, categoryName: "Beverages" },
+  { id: 11, categoryName: "Coffee & Tea" },
+  { id: 12, categoryName: "Household Items" },
 ];

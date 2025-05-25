@@ -29,10 +29,10 @@ const FilterBar: React.FC<FilterBarProps> = ({
   return (
     <>
       <Form.Group className="mb-3" controlId="formProductName">
-        <Form.Label>Ürün Filtrele</Form.Label>
+        <Form.Label>Filter product:</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Ürün adını giriniz"
+          placeholder="Enter product name."
           value={filteredName}
           onChange={(e) => setFilteredName(e.target.value)}
         />
@@ -40,7 +40,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
       <Form.Group className="d-flex gap-4 mb-3">
         <Form.Check
           type="radio"
-          label="Tümü"
+          label="All"
           name="statusRadios"
           id="statusAll"
           value="all"
@@ -49,7 +49,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
         />
         <Form.Check
           type="radio"
-          label="Satın Alınanlar"
+          label="Purchased"
           name="statusRadios"
           id="statusBought"
           value="bought"
@@ -58,7 +58,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
         />
         <Form.Check
           type="radio"
-          label="Satın Alınmayanlar"
+          label="Not Purchased"
           name="statusRadio"
           id="statusNotBought"
           value="notBought"
@@ -67,12 +67,12 @@ const FilterBar: React.FC<FilterBarProps> = ({
         />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Market</Form.Label>
+        <Form.Label>Market:</Form.Label>
         <Form.Select
           value={filteredShopId}
           onChange={(e) => setFilteredShopId(e.target.value)}
         >
-          <option value="all">Tümü</option>
+          <option value="all">All</option>
           {shops.map((shop) => (
             <option key={shop.id} value={shop.id.toString()}>
               {" "}
@@ -82,12 +82,12 @@ const FilterBar: React.FC<FilterBarProps> = ({
         </Form.Select>
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Kategori</Form.Label>
+        <Form.Label>Category:</Form.Label>
         <Form.Select
           value={filteredCategoryId}
           onChange={(e) => setFilteredCategoryId(e.target.value)}
         >
-          <option value="all">Tümü</option>
+          <option value="all">All</option>
           {categories.map((cat) => (
             <option key={cat.id} value={cat.id.toString()}>
               {cat.categoryName}

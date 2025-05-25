@@ -39,7 +39,7 @@ function App() {
       );
 
       if (!wasAllBoughtBefore && isAllBoughtNow) {
-        alert("Alışveriş Tamamlandı 🎉");
+        alert("Shopping Completed 🎉");
         setShowConfetti(true);
         setTimeout(() => {
           setShowConfetti(false);
@@ -85,7 +85,7 @@ function App() {
       <Container>
         <Row className="mt-5 justify-content-md-center">
           <Col xs={8}>
-            <h1>Ürün Ekle</h1>
+            <h1>Shopping List</h1>
             <ProductForm
               onAdd={handleAddProduct}
               shops={shops}
