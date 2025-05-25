@@ -86,14 +86,13 @@ const ProductTable: React.FC<ProductTableProps> = ({
               {getCategoryName(product.categoryId)}
             </td>
             <td>
-              <button
-                className={`btn btn-sm ${
-                  product.isBought ? "btn-success" : "btn-outline-danger"
-                }`}
+              <Button
+                variant={product.isBought ? "success" : "outline-danger"}
+                size="sm"
                 onClick={() => onToggleBought(product.id)}
               >
-                {product.isBought ? "Alındı" : "Alınmadı"}
-              </button>
+                {product.isBought ? "✓ Alındı" : "✗ Alınmadı"}
+              </Button>
             </td>
             <td>
               <IconButton
