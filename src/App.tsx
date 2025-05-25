@@ -7,6 +7,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import ProductTable from "./components/ProductTable";
 import Confetti from "react-confetti";
 import FilterBar from "./components/FilterBar";
+import Fuse from "fuse.js";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -53,7 +54,18 @@ function App() {
     setProducts((prev) => prev.filter((product) => product.id !== id));
   };
 
-  const filteredProducts = products.filter((product) => {
+  let resultProducts = products;
+
+  if (filteredName.trim() !== "") {
+    const fuse = new Fuse(products, {
+      keys: ["productName"],
+      threshold: 0.3,
+    });
+    const searchResults = fuse.search(filteredName.trim());
+    resultProducts = searchResults.map((result) => result.item);
+  }
+
+  const filteredProducts = resultProducts.filter((product) => {
     const matchesShop =
       filteredShopId === "all" || product.shopId === parseInt(filteredShopId);
     const matchesCategory =
@@ -63,13 +75,8 @@ function App() {
       filteredStatus === "all" ||
       (filteredStatus === "bought" && product.isBought) ||
       (filteredStatus === "notBought" && !product.isBought);
-    const matchesName =
-      filteredName.trim() === "" ||
-      product.productName
-        .toLowerCase()
-        .includes(filteredName.trim().toLowerCase());
 
-    return matchesShop && matchesCategory && matchesStatus && matchesName;
+    return matchesShop && matchesCategory && matchesStatus;
   });
 
   return (
