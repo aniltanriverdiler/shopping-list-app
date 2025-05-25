@@ -6,10 +6,17 @@ import { categories, shops } from "./data/mockData";
 import { Col, Container, Row } from "react-bootstrap";
 import ProductTable from "./components/ProductTable";
 import Confetti from "react-confetti";
+import FilterBar from "./components/FilterBar";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [filteredName, setFilteredName] = useState("");
+  const [filteredStatus, setFilteredStatus] = useState<
+    "all" | "bought" | "notBought"
+  >("all");
+  const [filteredShopId, setFilteredShopId] = useState<string>("all");
+  const [filteredCategoryId, setFilteredCategoryId] = useState<string>("all");
 
   const handleAddProduct = (newProduct: Product) => {
     setProducts((prev) => [...prev, newProduct]);
@@ -46,6 +53,25 @@ function App() {
     setProducts((prev) => prev.filter((product) => product.id !== id));
   };
 
+  const filteredProducts = products.filter((product) => {
+    const matchesShop =
+      filteredShopId === "all" || product.shopId === parseInt(filteredShopId);
+    const matchesCategory =
+      filteredCategoryId === "all" ||
+      product.categoryId === parseInt(filteredCategoryId);
+    const matchesStatus =
+      filteredStatus === "all" ||
+      (filteredStatus === "bought" && product.isBought) ||
+      (filteredStatus === "notBought" && !product.isBought);
+    const matchesName =
+      filteredName.trim() === "" ||
+      product.productName
+        .toLowerCase()
+        .includes(filteredName.trim().toLowerCase());
+
+    return matchesShop && matchesCategory && matchesStatus && matchesName;
+  });
+
   return (
     <>
       {showConfetti && <Confetti />}
@@ -58,8 +84,20 @@ function App() {
               shops={shops}
               categories={categories}
             />
+            <FilterBar
+              filteredName={filteredName}
+              setFilteredName={setFilteredName}
+              filteredStatus={filteredStatus}
+              setFilteredStatus={setFilteredStatus}
+              filteredShopId={filteredShopId}
+              setFilteredShopId={setFilteredShopId}
+              filteredCategoryId={filteredCategoryId}
+              setFilteredCategoryId={setFilteredCategoryId}
+              shops={shops}
+              categories={categories}
+            />
             <ProductTable
-              products={products}
+              products={filteredProducts}
               categories={categories}
               shops={shops}
               onToggleBought={handleToggleBought}

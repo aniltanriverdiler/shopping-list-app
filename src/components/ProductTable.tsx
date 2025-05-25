@@ -96,11 +96,11 @@ const ProductTable: React.FC<ProductTableProps> = ({
               </button>
             </td>
             <td>
-              <IconButton 
-              icon={<FaTrash/>}
-              variant="danger"
-              onClick={() => onDelete(product.id)}
-              title="Ürünü sil"
+              <IconButton
+                icon={<FaTrash />}
+                variant="danger"
+                onClick={() => onDelete(product.id)}
+                title="Ürünü sil"
               />
             </td>
           </tr>

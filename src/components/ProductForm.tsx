@@ -1,8 +1,9 @@
 import type React from "react";
 import type { CategoryProps, Product, ShopProps } from "../types/types";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, } from "react-bootstrap";
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import FilterBar from "./FilterBar";
 
 type ProductFormProps = {
   onAdd: (product: Product) => void;
