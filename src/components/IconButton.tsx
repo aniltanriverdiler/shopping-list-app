@@ -16,7 +16,7 @@ const StyledButton = styled(Button)`
   overflow: hidden;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -43,7 +43,7 @@ const StyledButton = styled(Button)`
 
   &.btn-danger {
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-    
+
     &:hover {
       background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
     }
@@ -51,7 +51,7 @@ const StyledButton = styled(Button)`
 
   &.btn-success {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    
+
     &:hover {
       background: linear-gradient(135deg, #059669 0%, #047857 100%);
     }
@@ -59,7 +59,7 @@ const StyledButton = styled(Button)`
 
   &.btn-primary {
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    
+
     &:hover {
       background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     }
@@ -67,7 +67,7 @@ const StyledButton = styled(Button)`
 
   &.btn-warning {
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-    
+
     &:hover {
       background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
     }
@@ -95,12 +95,7 @@ const IconButton = ({
   title,
 }: IconButtonProps) => {
   return (
-    <StyledButton 
-      variant={variant} 
-      size={size} 
-      onClick={onClick} 
-      title={title}
-    >
+    <StyledButton variant={variant} size={size} onClick={onClick} title={title}>
       {icon}
     </StyledButton>
   );

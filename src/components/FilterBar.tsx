@@ -96,7 +96,7 @@ const RadioGroup = styled.div`
   gap: 1rem;
   flex-wrap: wrap;
   align-items: center;
-  
+
   @media (max-width: 576px) {
     flex-direction: column;
     align-items: flex-start;
@@ -163,7 +163,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
   return (
     <FilterSection>
       <SectionTitle>Filter & Search</SectionTitle>
-      
+
       <StyledFormGroup className="search-input" controlId="formProductName">
         <StyledLabel>Search Products</StyledLabel>
         <StyledInput

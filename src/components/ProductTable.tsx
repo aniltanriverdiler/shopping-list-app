@@ -37,7 +37,7 @@ const StyledTable = styled(Table)`
 
   thead {
     background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    
+
     th {
       border: none;
       color: white;
@@ -71,7 +71,7 @@ const StyledTable = styled(Table)`
 
       &.purchased {
         background-color: #f0fdf4;
-        
+
         &:hover {
           background-color: #dcfce7;
         }
@@ -111,7 +111,7 @@ const StatusButton = styled(Button)`
   &.purchased {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
-    
+
     &:hover {
       background: linear-gradient(135deg, #059669 0%, #047857 100%);
       transform: translateY(-1px);
@@ -121,7 +121,7 @@ const StatusButton = styled(Button)`
   &.not-purchased {
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
     color: white;
-    
+
     &:hover {
       background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
       transform: translateY(-1px);
@@ -133,20 +133,20 @@ const EmptyState = styled.div`
   text-align: center;
   padding: 3rem 1rem;
   color: #6b7280;
-  
+
   .empty-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
     opacity: 0.5;
   }
-  
+
   .empty-title {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
     color: #374151;
   }
-  
+
   .empty-description {
     font-size: 1rem;
     opacity: 0.8;
@@ -216,7 +216,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
   return (
     <TableSection>
       <SectionTitle>Shopping List ({products.length} items)</SectionTitle>
-      <div style={{ overflowX: 'auto' }}>
+      <div style={{ overflowX: "auto" }}>
         <StyledTable responsive>
           <thead>
             <tr>
@@ -244,7 +244,9 @@ const ProductTable: React.FC<ProductTableProps> = ({
                   <ShopBadge>{getShopName(product.shopId)}</ShopBadge>
                 </td>
                 <td className={product.isBought ? "purchased" : ""}>
-                  <CategoryBadge>{getCategoryName(product.categoryId)}</CategoryBadge>
+                  <CategoryBadge>
+                    {getCategoryName(product.categoryId)}
+                  </CategoryBadge>
                 </td>
                 <td>
                   <StatusButton

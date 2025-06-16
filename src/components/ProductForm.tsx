@@ -190,9 +190,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
         </StyledFormGroup>
 
         <ButtonContainer>
-          <SubmitButton type="submit">
-            ✨ Add to List
-          </SubmitButton>
+          <SubmitButton type="submit">✨ Add to List</SubmitButton>
         </ButtonContainer>
       </Form>
     </FormSection>
